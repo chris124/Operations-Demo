@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		911EC137139D7F58006CA713 /* DisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 911EC135139D7F58006CA713 /* DisplayViewController.m */; };
+		911EC138139D7F58006CA713 /* DisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 911EC136139D7F58006CA713 /* DisplayViewController.xib */; };
+		911EC13D139D85BE006CA713 /* DownloadUrlOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 911EC13C139D85BE006CA713 /* DownloadUrlOperation.m */; };
 		917381D3139D7D3600E99448 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917381D2139D7D3600E99448 /* UIKit.framework */; };
 		917381D5139D7D3600E99448 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917381D4139D7D3600E99448 /* Foundation.framework */; };
 		917381D7139D7D3600E99448 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917381D6139D7D3600E99448 /* CoreGraphics.framework */; };
@@ -19,18 +22,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		911EC134139D7F58006CA713 /* DisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayViewController.h; sourceTree = "<group>"; };
+		911EC135139D7F58006CA713 /* DisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayViewController.m; sourceTree = "<group>"; };
+		911EC136139D7F58006CA713 /* DisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisplayViewController.xib; sourceTree = "<group>"; };
+		911EC13B139D85BE006CA713 /* DownloadUrlOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadUrlOperation.h; sourceTree = "<group>"; };
+		911EC13C139D85BE006CA713 /* DownloadUrlOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadUrlOperation.m; sourceTree = "<group>"; };
 		917381CE139D7D3600E99448 /* OperationsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OperationsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		917381D2139D7D3600E99448 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		917381D4139D7D3600E99448 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		917381D6139D7D3600E99448 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		917381DA139D7D3600E99448 /* OperationsDemo-Info.plist */ = {isa = PBXFileReference; path = "OperationsDemo-Info.plist"; sourceTree = "<group>"; };
+		917381DA139D7D3600E99448 /* OperationsDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OperationsDemo-Info.plist"; sourceTree = "<group>"; };
 		917381DC139D7D3600E99448 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		917381DE139D7D3600E99448 /* OperationsDemo-Prefix.pch */ = {isa = PBXFileReference; path = "OperationsDemo-Prefix.pch"; sourceTree = "<group>"; };
+		917381DE139D7D3600E99448 /* OperationsDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OperationsDemo-Prefix.pch"; sourceTree = "<group>"; };
 		917381DF139D7D3600E99448 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		917381E1139D7D3600E99448 /* OperationsDemoAppDelegate.h */ = {isa = PBXFileReference; path = OperationsDemoAppDelegate.h; sourceTree = "<group>"; };
+		917381E1139D7D3600E99448 /* OperationsDemoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OperationsDemoAppDelegate.h; sourceTree = "<group>"; };
 		917381E2139D7D3600E99448 /* OperationsDemoAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OperationsDemoAppDelegate.m; sourceTree = "<group>"; };
 		917381E5139D7D3600E99448 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		917381E7139D7D3600E99448 /* RootViewController.h */ = {isa = PBXFileReference; path = RootViewController.h; sourceTree = "<group>"; };
+		917381E7139D7D3600E99448 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		917381E8139D7D3600E99448 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		917381EB139D7D3600E99448 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RootViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		911EC13A139D8559006CA713 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				911EC13B139D85BE006CA713 /* DownloadUrlOperation.h */,
+				911EC13C139D85BE006CA713 /* DownloadUrlOperation.m */,
+			);
+			name = Operations;
+			sourceTree = "<group>";
+		};
 		917381C3139D7D3600E99448 = {
 			isa = PBXGroup;
 			children = (
@@ -79,12 +96,16 @@
 		917381D8139D7D3600E99448 /* OperationsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				911EC13A139D8559006CA713 /* Operations */,
 				917381E1139D7D3600E99448 /* OperationsDemoAppDelegate.h */,
 				917381E2139D7D3600E99448 /* OperationsDemoAppDelegate.m */,
 				917381E4139D7D3600E99448 /* MainWindow.xib */,
 				917381E7139D7D3600E99448 /* RootViewController.h */,
 				917381E8139D7D3600E99448 /* RootViewController.m */,
 				917381EA139D7D3600E99448 /* RootViewController.xib */,
+				911EC134139D7F58006CA713 /* DisplayViewController.h */,
+				911EC135139D7F58006CA713 /* DisplayViewController.m */,
+				911EC136139D7F58006CA713 /* DisplayViewController.xib */,
 				917381D9139D7D3600E99448 /* Supporting Files */,
 			);
 			path = OperationsDemo;
@@ -154,6 +175,7 @@
 				917381DD139D7D3600E99448 /* InfoPlist.strings in Resources */,
 				917381E6139D7D3600E99448 /* MainWindow.xib in Resources */,
 				917381EC139D7D3600E99448 /* RootViewController.xib in Resources */,
+				911EC138139D7F58006CA713 /* DisplayViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +189,8 @@
 				917381E0139D7D3600E99448 /* main.m in Sources */,
 				917381E3139D7D3600E99448 /* OperationsDemoAppDelegate.m in Sources */,
 				917381E9139D7D3600E99448 /* RootViewController.m in Sources */,
+				911EC137139D7F58006CA713 /* DisplayViewController.m in Sources */,
+				911EC13D139D85BE006CA713 /* DownloadUrlOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +303,7 @@
 				917381F1139D7D3600E99448 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface RootViewController : UITableViewController {
 
+    NSMutableDictionary *websites;
+    NSMutableDictionary *websiteData;
+    NSOperationQueue *operationQueue;
 }
 
 
