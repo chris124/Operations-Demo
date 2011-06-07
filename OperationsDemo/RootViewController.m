@@ -168,6 +168,12 @@
         [downloadToDiskOperation release];
         downloadToDiskOperation = nil;
     }
+    if (downloadJSONOperation) {
+        [downloadJSONOperation removeObserver:self forKeyPath:@"isFinished"];
+        [downloadJSONOperation cancel];
+        [downloadJSONOperation release];
+        downloadJSONOperation = nil;
+    }
     [websites release];
     [super dealloc];
 }
@@ -175,6 +181,16 @@
 #pragma mark -
 #pragma Actions
 - (void)cancel:(id)sender {
+    if (downloadToDiskOperation) {
+        [downloadToDiskOperation removeObserver:self forKeyPath:@"isFinished"];
+        [downloadToDiskOperation release];
+        downloadToDiskOperation = nil;
+    }
+    if (downloadJSONOperation) {
+        [downloadJSONOperation removeObserver:self forKeyPath:@"isFinished"];
+        [downloadJSONOperation release];
+        downloadJSONOperation = nil;
+    }
     [operationQueue cancelAllOperations];
 }
 
