@@ -10,13 +10,20 @@
 
 #import "DisplayViewController.h"
 #import "DownloadUrlOperation.h"
-
+#import "DownloadUrlToDiskOperation.h"
+#import "YAJLParserOperation.h"
+#import "YAJL.h"
 @implementation RootViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleDone target:self action:@selector(cancel:)];
+    self.navigationItem.rightBarButtonItem = cancelButton;
+    [cancelButton release];
+     
+    
     websites = [[NSMutableDictionary dictionaryWithCapacity:5] retain];
     [websites setValue:@"http://google.com" forKey:@"Google"];
     [websites setValue:@"http://wikipedia.org" forKey:@"Wikipedia"];
@@ -34,13 +41,34 @@
     [operationQueue setMaxConcurrentOperationCount:2];
     
     // Add operations to download data
-    for (NSString *key in [websites allKeys]) {
+    for (int i=0; i < [[websites allKeys] count] - 1; i++) {
+        NSString *key  = [[websites allKeys] objectAtIndex:i];
         NSString *urlAsString = [websites valueForKey:key];
         DownloadUrlOperation *operation = [[DownloadUrlOperation alloc] initWithURL:[NSURL URLWithString:urlAsString]];
         [operation addObserver:self forKeyPath:@"isFinished" options:NSKeyValueObservingOptionNew context:NULL];
         [operationQueue addOperation:operation]; // operation starts as soon as its added
         [operation release];
     }
+    
+    // To mix things up, we will download the last url directly to disk
+    NSString *key  = [[websites allKeys] lastObject];
+    NSString *urlAsString = [websites valueForKey:key];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    
+    
+    NSString *filename = @"DownloadedData";
+	NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:filename];
+
+    downloadToDiskOperation = [[DownloadUrlToDiskOperation alloc] initWithUrl:[NSURL URLWithString:urlAsString] saveToFilePath:filePath];
+    [downloadToDiskOperation setQueuePriority:NSOperationQueuePriorityVeryLow];
+    [downloadToDiskOperation addObserver:self forKeyPath:@"isFinished" options:NSKeyValueObservingOptionNew context:NULL];
+    [operationQueue addOperation:downloadToDiskOperation];
+
+    // Another use of operations can be to parse json data as it arrives
+    [websites setValue:@"http://api.twitter.com/1/statuses/public_timeline.json" forKey:@"Twitter Timeline (JSON)"];
+    downloadJSONOperation = [[YAJLParserOperation alloc] initWithURL:[NSURL URLWithString:[websites valueForKey:@"Twitter Timeline (JSON)"]]];
+    [downloadJSONOperation addObserver:self forKeyPath:@"isFinished" options:NSKeyValueObservingOptionNew context:NULL];
+    [operationQueue addOperation:downloadJSONOperation];
     
 }
 
@@ -134,6 +162,12 @@
 
 - (void)dealloc
 {
+    if (downloadToDiskOperation) {
+        [downloadToDiskOperation removeObserver:self forKeyPath:@"isFinished"];
+        [downloadToDiskOperation cancel];
+        [downloadToDiskOperation release];
+        downloadToDiskOperation = nil;
+    }
     [websites release];
     [super dealloc];
 }
@@ -147,9 +181,11 @@
 #pragma mark -
 #pragma KVO Observing
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)operation change:(NSDictionary *)change context:(void *)context {
+    NSString *source = nil;
+    NSData *data = nil;
+    NSError *error = nil;
     if ([operation isKindOfClass:[DownloadUrlOperation class]]) {
         DownloadUrlOperation *downloadOperation = (DownloadUrlOperation *)operation;
-        NSString *source = nil;
         for (NSString *key in [websites allKeys]) {
             if ([[websites valueForKey:key] isEqualToString:[downloadOperation.connectionURL absoluteString]]) {
                 source = key;
@@ -157,26 +193,60 @@
             }
         }
         if (source) {
-            NSLog(@"Downloaded finished from %@", source);
-            NSData *data = [downloadOperation data];
-            NSError * error = [downloadOperation error];
-            if (error != nil) {
-                // handle error
-                // Notify that we have got an error downloading this data;
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"DataDownloadFailed"
-                                                                    object:self
-                                                                  userInfo:[NSDictionary dictionaryWithObjectsAndKeys:source, @"source", error, @"error", nil]]; 
-            
-            } else {
-                // Notify that we have got this source data;
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"DataDownloadFinished"
-                                                                    object:self
-                                                                  userInfo:[NSDictionary dictionaryWithObjectsAndKeys:source, @"source", data, @"data", nil]]; 
-                // save data
-                [websiteData setValue:data forKey:source];
-            }
-
+            data = [downloadOperation data];
+            error = [downloadOperation error];
         }
+    }
+    else if([operation isEqual:downloadToDiskOperation]) {
+        DownloadUrlToDiskOperation *downloadOperation = (DownloadUrlToDiskOperation *)operation;
+        for (NSString *key in [websites allKeys]) {
+            if ([[websites valueForKey:key] isEqualToString:[downloadOperation.connectionURL absoluteString]]) {
+                source = key;
+                break;
+            }
+        }
+        if (source) {
+            data = [NSData dataWithContentsOfFile:downloadOperation.filePath];
+            error = [downloadOperation error];
+        }
+        [downloadToDiskOperation release];
+        downloadToDiskOperation = nil;
+
+    }
+    else if([operation isEqual:downloadJSONOperation]) {
+        YAJLParserOperation *downloadOperation = (YAJLParserOperation *)operation;
+        for (NSString *key in [websites allKeys]) {
+            if ([[websites valueForKey:key] isEqualToString:[downloadOperation.connectionURL absoluteString]]) {
+                source = key;
+                break;
+            }
+        }
+        if (source) {
+            data =   [[downloadOperation.document.root description] dataUsingEncoding:NSASCIIStringEncoding];
+            error = [downloadOperation error];
+        }
+        [downloadJSONOperation release];
+        downloadJSONOperation = nil;
+        
+    }
+    if (source) {
+        NSLog(@"Downloaded finished from %@", source);
+        if (error != nil) {
+            // handle error
+            // Notify that we have got an error downloading this data;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"DataDownloadFailed"
+                                                                object:self
+                                                              userInfo:[NSDictionary dictionaryWithObjectsAndKeys:source, @"source", error, @"error", nil]]; 
+            
+        } else {
+            // Notify that we have got this source data;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"DataDownloadFinished"
+                                                                object:self
+                                                              userInfo:[NSDictionary dictionaryWithObjectsAndKeys:source, @"source", data, @"data", nil]]; 
+            // save data
+            [websiteData setValue:data forKey:source];
+        }
+        
     }
 }
 @end

@@ -14,6 +14,9 @@
     NSMutableDictionary *websites;
     NSMutableDictionary *websiteData;
     NSOperationQueue *operationQueue;
+    
+    NSOperation *downloadToDiskOperation; // strong
+    NSOperation *downloadJSONOperation; // strong
 }
 
 
