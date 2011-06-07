@@ -10,6 +10,9 @@
 		911EC137139D7F58006CA713 /* DisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 911EC135139D7F58006CA713 /* DisplayViewController.m */; };
 		911EC138139D7F58006CA713 /* DisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 911EC136139D7F58006CA713 /* DisplayViewController.xib */; };
 		911EC13D139D85BE006CA713 /* DownloadUrlOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 911EC13C139D85BE006CA713 /* DownloadUrlOperation.m */; };
+		911EC1EA139DC25B006CA713 /* DownloadUrlToDiskOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 911EC1E9139DC25B006CA713 /* DownloadUrlToDiskOperation.m */; };
+		911EC1ED139DCEB3006CA713 /* YAJLParserOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 911EC1EC139DCEB3006CA713 /* YAJLParserOperation.m */; };
+		911EC1F8139DD35A006CA713 /* libYAJLIPhone.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 911EC1F7139DD35A006CA713 /* libYAJLIPhone.a */; };
 		917381D3139D7D3600E99448 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917381D2139D7D3600E99448 /* UIKit.framework */; };
 		917381D5139D7D3600E99448 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917381D4139D7D3600E99448 /* Foundation.framework */; };
 		917381D7139D7D3600E99448 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917381D6139D7D3600E99448 /* CoreGraphics.framework */; };
@@ -27,6 +30,19 @@
 		911EC136139D7F58006CA713 /* DisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisplayViewController.xib; sourceTree = "<group>"; };
 		911EC13B139D85BE006CA713 /* DownloadUrlOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadUrlOperation.h; sourceTree = "<group>"; };
 		911EC13C139D85BE006CA713 /* DownloadUrlOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadUrlOperation.m; sourceTree = "<group>"; };
+		911EC1E8139DC25B006CA713 /* DownloadUrlToDiskOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadUrlToDiskOperation.h; sourceTree = "<group>"; };
+		911EC1E9139DC25B006CA713 /* DownloadUrlToDiskOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadUrlToDiskOperation.m; sourceTree = "<group>"; };
+		911EC1EB139DCEB3006CA713 /* YAJLParserOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJLParserOperation.h; sourceTree = "<group>"; };
+		911EC1EC139DCEB3006CA713 /* YAJLParserOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAJLParserOperation.m; sourceTree = "<group>"; };
+		911EC1EF139DCF02006CA713 /* NSObject+YAJL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YAJL.h"; sourceTree = "<group>"; };
+		911EC1F0139DCF02006CA713 /* yajl_common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_common.h; sourceTree = "<group>"; };
+		911EC1F1139DCF02006CA713 /* yajl_gen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_gen.h; sourceTree = "<group>"; };
+		911EC1F2139DCF02006CA713 /* yajl_parse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = yajl_parse.h; sourceTree = "<group>"; };
+		911EC1F3139DCF02006CA713 /* YAJL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJL.h; sourceTree = "<group>"; };
+		911EC1F4139DCF02006CA713 /* YAJLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJLDocument.h; sourceTree = "<group>"; };
+		911EC1F5139DCF02006CA713 /* YAJLGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJLGen.h; sourceTree = "<group>"; };
+		911EC1F6139DCF02006CA713 /* YAJLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAJLParser.h; sourceTree = "<group>"; };
+		911EC1F7139DD35A006CA713 /* libYAJLIPhone.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libYAJLIPhone.a; sourceTree = "<group>"; };
 		917381CE139D7D3600E99448 /* OperationsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OperationsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		917381D2139D7D3600E99448 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		917381D4139D7D3600E99448 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -51,6 +67,7 @@
 				917381D3139D7D3600E99448 /* UIKit.framework in Frameworks */,
 				917381D5139D7D3600E99448 /* Foundation.framework in Frameworks */,
 				917381D7139D7D3600E99448 /* CoreGraphics.framework in Frameworks */,
+				911EC1F8139DD35A006CA713 /* libYAJLIPhone.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,8 +79,27 @@
 			children = (
 				911EC13B139D85BE006CA713 /* DownloadUrlOperation.h */,
 				911EC13C139D85BE006CA713 /* DownloadUrlOperation.m */,
+				911EC1E8139DC25B006CA713 /* DownloadUrlToDiskOperation.h */,
+				911EC1E9139DC25B006CA713 /* DownloadUrlToDiskOperation.m */,
+				911EC1EB139DCEB3006CA713 /* YAJLParserOperation.h */,
+				911EC1EC139DCEB3006CA713 /* YAJLParserOperation.m */,
 			);
 			name = Operations;
+			sourceTree = "<group>";
+		};
+		911EC1EE139DCEF0006CA713 /* libYajl-objc */ = {
+			isa = PBXGroup;
+			children = (
+				911EC1EF139DCF02006CA713 /* NSObject+YAJL.h */,
+				911EC1F0139DCF02006CA713 /* yajl_common.h */,
+				911EC1F1139DCF02006CA713 /* yajl_gen.h */,
+				911EC1F2139DCF02006CA713 /* yajl_parse.h */,
+				911EC1F3139DCF02006CA713 /* YAJL.h */,
+				911EC1F4139DCF02006CA713 /* YAJLDocument.h */,
+				911EC1F5139DCF02006CA713 /* YAJLGen.h */,
+				911EC1F6139DCF02006CA713 /* YAJLParser.h */,
+			);
+			name = "libYajl-objc";
 			sourceTree = "<group>";
 		};
 		917381C3139D7D3600E99448 = {
@@ -86,6 +122,7 @@
 		917381D1139D7D3600E99448 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				911EC1F7139DD35A006CA713 /* libYAJLIPhone.a */,
 				917381D2139D7D3600E99448 /* UIKit.framework */,
 				917381D4139D7D3600E99448 /* Foundation.framework */,
 				917381D6139D7D3600E99448 /* CoreGraphics.framework */,
@@ -96,6 +133,7 @@
 		917381D8139D7D3600E99448 /* OperationsDemo */ = {
 			isa = PBXGroup;
 			children = (
+				911EC1EE139DCEF0006CA713 /* libYajl-objc */,
 				911EC13A139D8559006CA713 /* Operations */,
 				917381E1139D7D3600E99448 /* OperationsDemoAppDelegate.h */,
 				917381E2139D7D3600E99448 /* OperationsDemoAppDelegate.m */,
@@ -191,6 +229,8 @@
 				917381E9139D7D3600E99448 /* RootViewController.m in Sources */,
 				911EC137139D7F58006CA713 /* DisplayViewController.m in Sources */,
 				911EC13D139D85BE006CA713 /* DownloadUrlOperation.m in Sources */,
+				911EC1EA139DC25B006CA713 /* DownloadUrlToDiskOperation.m in Sources */,
+				911EC1ED139DCEB3006CA713 /* YAJLParserOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +305,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OperationsDemo/OperationsDemo-Prefix.pch";
 				INFOPLIST_FILE = "OperationsDemo/OperationsDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -278,6 +322,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OperationsDemo/OperationsDemo-Prefix.pch";
 				INFOPLIST_FILE = "OperationsDemo/OperationsDemo-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
