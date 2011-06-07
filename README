@@ -1,0 +1,1 @@
+This project provides sample code to perform simultaneous url downloads by wrapping asynchronous NSURLConnections in NSOperations and using NSOperationQueues to handle threading.
